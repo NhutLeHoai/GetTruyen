@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartingForm));
             this.btnWebTruyen = new System.Windows.Forms.Button();
             this.btnFaceBook = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -60,9 +61,10 @@
             this.Controls.Add(this.btnFaceBook);
             this.Controls.Add(this.btnWebTruyen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StartingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StartingForm";
+            this.Text = "Gettruyen By NhutLe";
             this.ResumeLayout(false);
 
         }

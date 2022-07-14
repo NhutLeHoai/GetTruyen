@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using xNet;
 using Newtonsoft.Json;
@@ -128,7 +123,7 @@ namespace GetTruyen
             if(albumName != null)
             {
                 Directory.CreateDirectory(savePath + "\\" + albumName);
-                txbStatus.Text = "Đang tải Album " + albumName+" ---- ";
+                txbStatus.Text = "Đang tải Album " + albumName;
                 int filename = 1;
                 progressDownload.Value = 0;
                 progressDownload.Maximum = urlList.Count;

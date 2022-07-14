@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fFBDownloader));
             this.txbFBUrl = new System.Windows.Forms.TextBox();
             this.gpDownload = new System.Windows.Forms.GroupBox();
             this.btnDownload = new System.Windows.Forms.Button();
@@ -192,8 +193,9 @@
             this.Controls.Add(this.ckbAlbumList);
             this.Controls.Add(this.gpAT);
             this.Controls.Add(this.gpDownload);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fFBDownloader";
-            this.Text = "Tải Album Facebook";
+            this.Text = "Tải Album Facebook By NhutLe";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fFBDownloader_FormClosed);
             this.Load += new System.EventHandler(this.fFBDownloader_Load);
             this.gpDownload.ResumeLayout(false);

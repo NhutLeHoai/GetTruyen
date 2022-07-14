@@ -18,3 +18,7 @@ D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.application
 D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.csproj.CopyComplete
 D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.exe
 D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.pdb
+D:\C#\GetData\GetTruyen\bin\Release\Newtonsoft.Json.dll
+D:\C#\GetData\GetTruyen\bin\Release\Newtonsoft.Json.xml
+D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.fFBDownloader.resources
+D:\C#\GetData\GetTruyen\obj\Release\GetTruyen.StartingForm.resources
