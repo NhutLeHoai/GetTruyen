@@ -34,6 +34,7 @@
             this.btnDownload = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.gpAT = new System.Windows.Forms.GroupBox();
+            this.saveAccessToken = new System.Windows.Forms.Button();
             this.btnToken1 = new System.Windows.Forms.Button();
             this.txbAccessToken = new System.Windows.Forms.TextBox();
             this.getSavePlace = new System.Windows.Forms.FolderBrowserDialog();
@@ -42,7 +43,7 @@
             this.txbStatus = new System.Windows.Forms.TextBox();
             this.txbDownloadStatus = new System.Windows.Forms.TextBox();
             this.progressDownload = new System.Windows.Forms.ProgressBar();
-            this.saveAccessToken = new System.Windows.Forms.Button();
+            this.ckdSelectAll = new System.Windows.Forms.CheckBox();
             this.gpDownload.SuspendLayout();
             this.gpAT.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +99,16 @@
             this.gpAT.TabStop = false;
             this.gpAT.Text = "Nhập Access Token";
             // 
+            // saveAccessToken
+            // 
+            this.saveAccessToken.Location = new System.Drawing.Point(468, 16);
+            this.saveAccessToken.Name = "saveAccessToken";
+            this.saveAccessToken.Size = new System.Drawing.Size(137, 23);
+            this.saveAccessToken.TabIndex = 2;
+            this.saveAccessToken.Text = "Lưu Access Token";
+            this.saveAccessToken.UseVisualStyleBackColor = true;
+            this.saveAccessToken.Click += new System.EventHandler(this.saveAccessToken_Click);
+            // 
             // btnToken1
             // 
             this.btnToken1.Location = new System.Drawing.Point(311, 16);
@@ -119,9 +130,9 @@
             // 
             this.ckbAlbumList.CheckOnClick = true;
             this.ckbAlbumList.FormattingEnabled = true;
-            this.ckbAlbumList.Location = new System.Drawing.Point(12, 204);
+            this.ckbAlbumList.Location = new System.Drawing.Point(12, 219);
             this.ckbAlbumList.Name = "ckbAlbumList";
-            this.ckbAlbumList.Size = new System.Drawing.Size(614, 409);
+            this.ckbAlbumList.Size = new System.Drawing.Size(614, 394);
             this.ckbAlbumList.TabIndex = 5;
             // 
             // lbGroupName
@@ -171,21 +182,23 @@
             this.progressDownload.Size = new System.Drawing.Size(146, 23);
             this.progressDownload.TabIndex = 9;
             // 
-            // saveAccessToken
+            // ckdSelectAll
             // 
-            this.saveAccessToken.Location = new System.Drawing.Point(468, 16);
-            this.saveAccessToken.Name = "saveAccessToken";
-            this.saveAccessToken.Size = new System.Drawing.Size(137, 23);
-            this.saveAccessToken.TabIndex = 2;
-            this.saveAccessToken.Text = "Lưu Access Token";
-            this.saveAccessToken.UseVisualStyleBackColor = true;
-            this.saveAccessToken.Click += new System.EventHandler(this.saveAccessToken_Click);
+            this.ckdSelectAll.AutoSize = true;
+            this.ckdSelectAll.Location = new System.Drawing.Point(14, 197);
+            this.ckdSelectAll.Name = "ckdSelectAll";
+            this.ckdSelectAll.Size = new System.Drawing.Size(69, 17);
+            this.ckdSelectAll.TabIndex = 10;
+            this.ckdSelectAll.Text = "Select all";
+            this.ckdSelectAll.UseVisualStyleBackColor = true;
+            this.ckdSelectAll.CheckedChanged += new System.EventHandler(this.ckbSelectAll_CheckedChanged);
             // 
             // fFBDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 622);
+            this.Controls.Add(this.ckdSelectAll);
             this.Controls.Add(this.progressDownload);
             this.Controls.Add(this.txbDownloadStatus);
             this.Controls.Add(this.txbStatus);
@@ -223,5 +236,6 @@
         private System.Windows.Forms.TextBox txbDownloadStatus;
         private System.Windows.Forms.ProgressBar progressDownload;
         private System.Windows.Forms.Button saveAccessToken;
+        private System.Windows.Forms.CheckBox ckdSelectAll;
     }
 }

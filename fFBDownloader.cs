@@ -340,5 +340,25 @@ namespace GetTruyen
                 MessageBox.Show("Không tìm thấy file lưu Access Token, vui lòng điền Acess Token!");
             }
         }
+
+        private void ckbSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckdSelectAll.Text == "Select all")
+            {
+                ckdSelectAll.Text = "Deselect all";
+                for (int i = 0; i < ckbAlbumList.Items.Count ; i++)
+                {
+                    ckbAlbumList.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                ckdSelectAll.Text = "Select all";
+                for (int i = 0; i < ckbAlbumList.Items.Count; i++)
+                {
+                    ckbAlbumList.SetItemChecked(i, false);
+                }
+            }
+        }
     }
 }
