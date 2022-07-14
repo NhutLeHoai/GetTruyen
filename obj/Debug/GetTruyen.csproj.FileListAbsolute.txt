@@ -13,9 +13,12 @@ D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.csproj.CoreCompileInputs.cache
 D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.csproj.CopyComplete
 D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.exe
 D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.pdb
-D:\C#\GetData\GetTruyen\bin\Debug\WebDriver.dll
 D:\C#\GetData\GetTruyen\bin\Debug\xNet.dll
 D:\C#\GetData\GetTruyen\bin\Debug\GetTruyen.exe.manifest
 D:\C#\GetData\GetTruyen\bin\Debug\GetTruyen.application
 D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.exe.manifest
 D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.application
+D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.fFBDownloader.resources
+D:\C#\GetData\GetTruyen\bin\Debug\Newtonsoft.Json.dll
+D:\C#\GetData\GetTruyen\bin\Debug\Newtonsoft.Json.xml
+D:\C#\GetData\GetTruyen\obj\Debug\GetTruyen.StartingForm.resources

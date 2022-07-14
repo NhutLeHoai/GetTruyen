@@ -74,7 +74,7 @@
             // 
             this.btnDownAll.Location = new System.Drawing.Point(3, 2);
             this.btnDownAll.Name = "btnDownAll";
-            this.btnDownAll.Size = new System.Drawing.Size(100, 23);
+            this.btnDownAll.Size = new System.Drawing.Size(175, 23);
             this.btnDownAll.TabIndex = 2;
             this.btnDownAll.Text = "Tải hết";
             this.btnDownAll.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@
             // 
             // btnDownByChapter
             // 
-            this.btnDownByChapter.Location = new System.Drawing.Point(109, 2);
+            this.btnDownByChapter.Location = new System.Drawing.Point(191, 3);
             this.btnDownByChapter.Name = "btnDownByChapter";
-            this.btnDownByChapter.Size = new System.Drawing.Size(100, 23);
+            this.btnDownByChapter.Size = new System.Drawing.Size(175, 23);
             this.btnDownByChapter.TabIndex = 3;
             this.btnDownByChapter.Text = "Tải Theo Chap";
             this.btnDownByChapter.UseVisualStyleBackColor = true;
@@ -94,9 +94,9 @@
             // 
             this.ckdChapterList.CheckOnClick = true;
             this.ckdChapterList.FormattingEnabled = true;
-            this.ckdChapterList.Location = new System.Drawing.Point(13, 117);
+            this.ckdChapterList.Location = new System.Drawing.Point(13, 132);
             this.ckdChapterList.Name = "ckdChapterList";
-            this.ckdChapterList.Size = new System.Drawing.Size(474, 514);
+            this.ckdChapterList.Size = new System.Drawing.Size(474, 499);
             this.ckdChapterList.TabIndex = 5;
             // 
             // fbdDirPath
@@ -107,7 +107,7 @@
             // 
             this.txbStatus.BackColor = System.Drawing.SystemColors.Control;
             this.txbStatus.Enabled = false;
-            this.txbStatus.Location = new System.Drawing.Point(337, 69);
+            this.txbStatus.Location = new System.Drawing.Point(119, 106);
             this.txbStatus.Name = "txbStatus";
             this.txbStatus.Size = new System.Drawing.Size(150, 20);
             this.txbStatus.TabIndex = 9;
@@ -121,14 +121,14 @@
             this.pnl1.Enabled = false;
             this.pnl1.Location = new System.Drawing.Point(116, 64);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(215, 29);
+            this.pnl1.Size = new System.Drawing.Size(371, 29);
             this.pnl1.TabIndex = 10;
             // 
             // ckdSelectAll
             // 
             this.ckdSelectAll.AutoSize = true;
             this.ckdSelectAll.Enabled = false;
-            this.ckdSelectAll.Location = new System.Drawing.Point(16, 96);
+            this.ckdSelectAll.Location = new System.Drawing.Point(17, 112);
             this.ckdSelectAll.Name = "ckdSelectAll";
             this.ckdSelectAll.Size = new System.Drawing.Size(69, 17);
             this.ckdSelectAll.TabIndex = 4;
@@ -152,6 +152,7 @@
             this.Name = "fMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Get Truyện By NhutLe";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fMain_FormClosed);
             this.grpUrl.ResumeLayout(false);
             this.grpUrl.PerformLayout();
             this.pnl1.ResumeLayout(false);

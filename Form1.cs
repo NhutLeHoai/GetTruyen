@@ -2,7 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Net;
 using System.Threading;
 using System.Windows.Forms;
 using xNet;
@@ -26,7 +28,7 @@ namespace GetTruyen
 
         class Request
         {
-            internal static HttpRequest request;
+            internal static WebClient request;
         } //define new request
 
         #region Remove special character in manga name & chapter name
@@ -46,15 +48,19 @@ namespace GetTruyen
         {
             chapterList.Clear();
             string url = txbUrl.Text;
-            HtmlWeb web = new HtmlWeb();
+            
             try {
+                HtmlWeb web = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument doc = web.Load(url);
+                
+                
 
                 string xPath = "";
                 string xPathTitle = "";
-
+                defWeb.Clear();
                 foreach (var subUrl in url.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries))
                 {
+                    
                     defWeb.Add(subUrl);
                 }
                 if (url.Contains("nettruyen"))
@@ -103,29 +109,51 @@ namespace GetTruyen
             
 
             catch { MessageBox.Show("Đường dẫn phải bao gồm phần http://\nVí dụ: http://www.nettruyenco.com/truyen-tranh/naruto-cuu-vi-ho-ly-11996", "Đường dẫn url không hợp lệ!"); }
+            
 
         }
         #endregion
 
+
+        static protected void ImageDownloader(string url, string _fileName)
+        {
+            try
+            {
+                Request.request.DownloadFileAsync(
+                    new System.Uri(url),
+                    _fileName
+                    );
+                while (Request.request.IsBusy) { }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
         #region Download images
         void ImagesDownloader(string url,string fileName)
         {
-            
-            Request.request = new HttpRequest();
-            Request.request.Cookies = new CookieDictionary();
             string userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.49";
             string referer = "www" + defWeb[1];
-            Request.request.ConnectTimeout = 5000;
-            Request.request.AddHeader("User-Agent", userAgent);
-            Request.request.AddHeader("Referer",referer);
+            string _fileName = fileName + ".jpg";
+
             if (!url.Contains(@"https:") && (!url.Contains(@"http:")))
             {
                 url = @"http:" + url;
             }
-            var img = Request.request.Get(url).ToMemoryStream().ToArray();
-            File.WriteAllBytes(fileName+".jpg", img);
-            Request.request.Close();
+
+            using(Request.request = new WebClient())
+            {
+                Request.request.Headers.Add("User-Agent", userAgent);
+                Request.request.Headers.Add("Referer", referer);
+                ImageDownloader(url, _fileName);
+                Request.request.Dispose();
+            }
             
+
+
         }
         #endregion
 
@@ -189,8 +217,11 @@ namespace GetTruyen
             }
             txbStatus.Text = "Tải hoàn tất!";
             MessageBox.Show("Quá trình tải truyện hoàn tất!");
+            Request.request.Dispose();
+            webKey = "";
 
-            
+
+
         }
         #endregion
 
@@ -246,6 +277,17 @@ namespace GetTruyen
             }
             
         } //select - deselect all chapter list
+
+        private void btnGetToFbForm_Click(object sender, EventArgs e)
+        {
+            fFBDownloader fFBDownloader = new fFBDownloader();
+            fFBDownloader.ShowDialog();
+        }
+
+        private void fMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 

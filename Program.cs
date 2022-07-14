@@ -16,7 +16,8 @@ namespace GetTruyen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fMain());
+            StartingForm startingForm = new StartingForm();
+            Application.Run(startingForm);
         }
     }
 }
