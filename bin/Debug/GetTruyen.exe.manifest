@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GetTruyen.exe" size="397312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GetTruyen.exe" size="759296">
       <assemblyIdentity name="GetTruyen" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9s0x03rUE8k0iY5UUXzwwCaDByvIgwXQJdSm61R9/Oo=</dsig:DigestValue>
+        <dsig:DigestValue>eRH8XSXBUor8/uPGBngWAZ2P/nieaAqO4+PK5lT+fNM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

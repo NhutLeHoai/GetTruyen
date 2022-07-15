@@ -46,21 +46,23 @@ namespace GetTruyen
         #region Get chapter url
         void GetNettruyenChapterUrl()
         {
+            webKey = "";
             chapterList.Clear();
             string url = txbUrl.Text;
-            
-            try {
+
+            try
+            {
                 HtmlWeb web = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument doc = web.Load(url);
-                
-                
+
+
 
                 string xPath = "";
                 string xPathTitle = "";
                 defWeb.Clear();
                 foreach (var subUrl in url.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    
+
                     defWeb.Add(subUrl);
                 }
                 if (url.Contains("nettruyen"))
@@ -85,19 +87,21 @@ namespace GetTruyen
                     {
                         string chapterName = specialCharProcess(link.InnerHtml.Replace("Chương", "Chapter"));
                         HtmlAttribute chapterLink = link.Attributes["href"];
-                        if((chapterLink.Value != "#"))
+                        if ((chapterLink.Value != "#"))
                         {
-                            chapterList.Add(chapterName, chapterLink.Value);
+                            chapterList.Add(chapterLink.Value, chapterName);
                         }
-                            
+
                     }
                     HtmlNode title = doc.DocumentNode.SelectSingleNode(xPathTitle);
                     mangaName = title.InnerText;
                     ckdChapterList.Items.Clear();
-                    foreach (string chapterName in chapterList.Keys)
-                    {
-                        ckdChapterList.Items.Add(chapterName);
-                    }
+
+                    BindingSource chapterListSource = new BindingSource();
+                    chapterListSource.DataSource = chapterList;
+                    ckdChapterList.DataSource = chapterListSource;
+                    ckdChapterList.DisplayMember = "Value";
+                    ckdChapterList.ValueMember = "Key";
                     pnl1.Enabled = true;
                     ckdSelectAll.Enabled = true;
                 }
@@ -106,10 +110,10 @@ namespace GetTruyen
                     MessageBox.Show("Đường dẫn không hợp lệ, vui lòng copy url ở mục chọn chapter", "Lỗi đường dẫn");
                 }
             }
-            
+
 
             catch { MessageBox.Show("Đường dẫn phải bao gồm phần http://\nVí dụ: http://www.nettruyenco.com/truyen-tranh/naruto-cuu-vi-ho-ly-11996", "Đường dẫn url không hợp lệ!"); }
-            
+
 
         }
         #endregion
@@ -192,33 +196,33 @@ namespace GetTruyen
             {
                 foreach (var chapter in chapterList.Keys)
                 {
-                    string chapterName = specialCharProcess(chapter);
+                    string chapterName = specialCharProcess(chapterList[chapter]);
                     txbStatus.Text = "Đang tải: " + chapterName;
                     string chapterDirPath = mangaDirPath +"\\"+ chapterName;
                     Directory.CreateDirectory(chapterDirPath);
-                    GetImgUrl(chapterList[chapter],chapterDirPath);
+                    GetImgUrl(chapter,chapterDirPath);
                        
                 }
             }
             if (request == "downbychapter")
             {
-                for (int i = 0; i < chapterList.Count; i++)
+                for (int i = 0; i < ckdChapterList.CheckedItems.Count; i++)
                 {
-                    if (ckdChapterList.GetItemChecked(i))
-                    {
-                        string selectedChapter = specialCharProcess(ckdChapterList.Items[i].ToString());
-                        txbStatus.Text = "Đang tải: " + selectedChapter;
-                        string chapterDirPath = mangaDirPath + "\\" + selectedChapter;
-                        Directory.CreateDirectory(chapterDirPath);
-                        GetImgUrl(chapterList[selectedChapter], chapterDirPath);
+                    string selectedChapter = ckdChapterList.CheckedItems[i].ToString();
+                    string[] selectedChapterArray = selectedChapter.Replace("[", "").Replace("]", "").Split('\u002C');
+                    string selectedChapterProcessed = specialCharProcess(selectedChapterArray[1].ToString());
+                    txbStatus.Text = "Đang tải: " + selectedChapterProcessed;
+                    string chapterDirPath = mangaDirPath + "\\" + selectedChapterProcessed;
+                    Directory.CreateDirectory(chapterDirPath);
+                    GetImgUrl(selectedChapterArray[0], chapterDirPath);
                         
-                    }
                 }
             }
             txbStatus.Text = "Tải hoàn tất!";
             MessageBox.Show("Quá trình tải truyện hoàn tất!");
+
             Request.request.Dispose();
-            webKey = "";
+            
 
 
 
