@@ -111,7 +111,7 @@ namespace GetTruyen
         {
             if(groupID == "")
             {
-                Regex groupIdFilter = new Regex("(?<=a\\.)(.*)(?=&)");
+                Regex groupIdFilter = new Regex(@"(?<=a\.)(.*)(?=&)");
                 Match matchFilter = groupIdFilter.Match(txbFBUrl.Text);
                 groupID = matchFilter.Value;
             }
@@ -272,6 +272,7 @@ namespace GetTruyen
             }
             else
             {
+                albumDict.Clear();
                 downloadType = 1;
                 Thread getId = new Thread(() => { GetFbGroupID(); });
                 getId.Start();
