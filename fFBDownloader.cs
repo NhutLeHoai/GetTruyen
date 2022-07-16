@@ -100,7 +100,7 @@ namespace GetTruyen
             }
             catch (Exception)
             {
-                MessageBox.Show("Có lỗi trong quá trình download\nVui lòng kiểm tra lại Access Token và Link download");
+                MessageBox.Show("Có lỗi trong quá trình download\nVui lòng kiểm tra lại Access Token và Link download\nChỉ hỗ trợ public album/group/page");
                 return null;
             }
 
@@ -214,7 +214,7 @@ namespace GetTruyen
             }
             catch (Exception)
             {
-                MessageBox.Show("Có lỗi trong quá trình lấy thông tin group\nVui lòng kiểm tra lại Access Token và Link download");
+                MessageBox.Show("Có lỗi trong quá trình lấy thông tin group\nVui lòng kiểm tra lại Access Token và Link download\nChỉ hỗ trợ public album/group/page");
             }
         }
         void GetGroupAlbumList(string groupID)
