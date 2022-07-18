@@ -361,5 +361,10 @@ namespace GetTruyen
                 }
             }
         }
+
+        private void mnsTutor_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://youtu.be/erj7_i4_UEw");
+        }
     }
 }

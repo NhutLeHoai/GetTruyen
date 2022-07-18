@@ -34,7 +34,7 @@ namespace GetTruyen
         #region Remove special character in manga name & chapter name
         string specialCharProcess(string mangaName)
         {
-            string[] specialChar = new string[] { "\\", "/", ":", "*", "?", "\"", "<", ">", "|" };
+            string[] specialChar = new string[] { "\\", "/", ":", "*", "?", "\"", "<", ">", "|","\n","\t" };
             for (int i = 0; i < specialChar.Length; i++)
             {
                 mangaName = mangaName.Replace(specialChar[i], "");
@@ -50,8 +50,8 @@ namespace GetTruyen
             chapterList.Clear();
             string url = txbUrl.Text;
 
-            try
-            {
+            //try
+            //{
                 HtmlWeb web = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument doc = web.Load(url);
 
@@ -77,19 +77,28 @@ namespace GetTruyen
                     xPathTitle = "/html/body/div[1]/div[1]/div[3]/div/div[1]/div[2]/h1";
                     webKey = "truyenqq";
                 }
+                else if (url.Contains("coloredmanga.com"))
+                {
+                    xPath = "//ul[@class='main version-chap volumns']//a[@href]";
+                    xPathTitle = "/html/body/div[1]/div/div[1]/div/div[1]/div/div/div/div[1]/h1";
+                    webKey = "coloredmanga";
+                }
                 else
                 {
-                    MessageBox.Show("Hiện tại chỉ hỗ trợ Nettruyen và TruyenQQ", "Trang web không hỗ trợ");
+                    MessageBox.Show("Trang web không hỗ trợ", "Trang web không hỗ trợ");
                 }
-                try
-                {
+                //try
+                //{
                     foreach (HtmlNode link in doc.DocumentNode.SelectNodes(xPath))
                     {
                         string chapterName = specialCharProcess(link.InnerHtml.Replace("Chương", "Chapter"));
                         HtmlAttribute chapterLink = link.Attributes["href"];
-                        if ((chapterLink.Value != "#"))
+                        if ((chapterLink.Value != "#") && (chapterLink.Value != "javascript:void(0)"))
                         {
-                            chapterList.Add(chapterLink.Value, chapterName);
+                            if(!chapterList.ContainsKey(chapterLink.Value))
+                            {
+                                chapterList.Add(chapterLink.Value, chapterName);
+                            }     
                         }
 
                     }
@@ -104,15 +113,15 @@ namespace GetTruyen
                     ckdChapterList.ValueMember = "Key";
                     pnl1.Enabled = true;
                     ckdSelectAll.Enabled = true;
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Đường dẫn không hợp lệ, vui lòng copy url ở mục chọn chapter", "Lỗi đường dẫn");
-                }
-            }
+                //}
+                //catch (Exception)
+                //{
+                    //MessageBox.Show("Đường dẫn không hợp lệ, vui lòng copy url ở mục chọn chapter", "Lỗi đường dẫn");
+                //}
+            //}
 
 
-            catch { MessageBox.Show("Đường dẫn phải bao gồm phần http://\nVí dụ: http://www.nettruyenco.com/truyen-tranh/naruto-cuu-vi-ho-ly-11996", "Đường dẫn url không hợp lệ!"); }
+            //catch { MessageBox.Show("Đường dẫn phải bao gồm phần http://\nVí dụ: http://www.nettruyenco.com/truyen-tranh/naruto-cuu-vi-ho-ly-11996", "Đường dẫn url không hợp lệ!"); }
 
 
         }
@@ -171,9 +180,13 @@ namespace GetTruyen
             {
                 imgXPath = "//div[@class='page-chapter']//img[@src]";
             }
-            else
+            else if(webKey == "truyenqq")
             {
                 imgXPath = "//div[@class ='chapter_content']//img[@src]";
+            }
+            else if(webKey == "coloredmanga")
+            {
+                imgXPath = "//div[@class ='page-break ']//img[@src]";
             }
             int i = 1;
             foreach (HtmlNode imgNode in chapterNode.DocumentNode.SelectNodes(imgXPath))
